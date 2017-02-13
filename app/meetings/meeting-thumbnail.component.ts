@@ -4,21 +4,23 @@ import {Component, Input, Output, EventEmitter } from '@angular/core'
   selector:'meeting-thumbnail',
   template:`
     <div class="well hoverwell thumbnail">
-     <h2>{{events.name}}</h2>
-    <div>Date:  {{events.date}}</div>
-    <div>Time: {{events.time}}</div>    
-    <div>Price: \${{events.price}}</div>
-    <div>
-        <span>Location: {{events.location.address}}</span>
+     <h2>{{events?.name}}</h2>
+    <div>Date:  {{events?.date}}</div>
+    <div>Time: {{events?.time}}</div>    
+    <div>Price: \${{events?.price}}</div>
+    <div *ngIf="events?.location">
+        <span>Location: {{events?.location?.address}}</span>
         <span class="pad-left"></span>
-        <span>{{events.location.city}}, {{events.location.country}}</span>
+        <span>{{events?.location?.city}}, {{events?.location?.country}}</span>
     </div>
-
+<div *ngIf="events?.onlineUrl">Online URL: {{events?.onlineUrl}}
+</div>
   
     </div>`
     ,
     styles:[`
-    .pad-left { margin-left: 100px; }
+    .thumbnail {min-height: 210px;}
+    .pad-left { margin-left: 10px; }
     
     `
     ]
