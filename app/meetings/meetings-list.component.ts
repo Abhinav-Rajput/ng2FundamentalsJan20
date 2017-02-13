@@ -2,7 +2,7 @@ import {Component, OnInit}  from '@angular/core'
 import{MeetingService} from './shared/meeting-service'
 import {ToastrService} from '../common/toastr.service'
 @Component({
-    selector:'meetings-list',
+
     template:`
       <div>
     <h2> Upcomming Angular Events </h2>
