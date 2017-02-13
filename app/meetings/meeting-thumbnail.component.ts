@@ -6,14 +6,19 @@ import {Component, Input, Output, EventEmitter } from '@angular/core'
     <div class="well hoverwell thumbnail">
      <h2>{{events?.name}}</h2>
     <div>Date:  {{events?.date}}</div>
-    <div>Time: {{events?.time}}</div>    
+    <div [ngSwitch]="events?.time">Time: {{events?.time}}
+        <span *ngSwitchCase="'8:00 am'"> (Eary Start)</span>
+        <span *ngSwitchCase="'10:00 am'"> (Late Start)</span>
+        <span *ngSwitchDefault> (Normal Start)</span>
+    </div>  
+    
     <div>Price: \${{events?.price}}</div>
-    <div [hidden]="!events?.location">
+    <div *ngIf="events?.location">
         <span>Location: {{events?.location?.address}}</span>
         <span class="pad-left"></span>
         <span>{{events?.location?.city}}, {{events?.location?.country}}</span>
     </div>
-<div [hidden]="!events?.onlineUrl">Online URL: {{events?.onlineUrl}}
+<div *ngIf="events?.onlineUrl">Online URL: {{events?.onlineUrl}}
 </div>
   
     </div>`
